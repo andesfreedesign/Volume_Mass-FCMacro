@@ -10,6 +10,8 @@ https://tootalltoby.com/leaderboard/
 - Run the macro
 - Enter the density of the material (Kg/m3)
 
+![capture](https://github.com/andesfreedesign/Volume_Mass-FCMacro/blob/main/density.png)
+
 ## Show results in:
 - Imperial Decimal System
   
@@ -22,5 +24,7 @@ Mass: lbs (pounds)
 Volume: mm3 (cubic millimeters)
 
 Mass: g (grams)
+
+![capture](https://github.com/andesfreedesign/Volume_Mass-FCMacro/blob/main/results.png)
 
 > Note: Set a keyboard shortcut for the macro, so you can get the result faster
