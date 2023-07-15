@@ -7,6 +7,7 @@ https://tootalltoby.com/leaderboard/
 ![capture](https://github.com/andesfreedesign/Volume_Mass-FCMacro/blob/main/part.png)
 
 ## How to use
+- Select the object
 - Run the macro
 - Enter the density of the material (Kg/m3)
 
