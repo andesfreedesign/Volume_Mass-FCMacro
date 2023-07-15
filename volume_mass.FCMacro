@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+# (c) MaxiV, 2023
+
+__Name__ = 'Volume_Mass'
+__Comment__ = 'A simple macro for FreeCAD with which we obtain the volume and mass of a solid'
+__Author__ = 'Maxi Vasquez'
+__Version__ = '0.1'
+__Date__ = '2023-07-15'
+__License__ = 'LGPL-2.0-or-later'
+
+import FreeCADGui
+from PySide2 import QtWidgets, QtGui
+
+def calculate_mass(shape, material_density):
+    volume = shape.Volume * 0.000001
+    mass = volume * material_density
+    return mass
+
+def format_number(number):
+    formatted_number = "{:,.3f}".format(number)
+    formatted_number = formatted_number.replace(",", "temp").replace(".", ",").replace("temp", ".")
+    return formatted_number
+
+def show_volume_and_mass():
+    doc = FreeCADGui.ActiveDocument
+    selection = FreeCADGui.Selection.getSelection()
+
+    if len(selection) == 1:
+        obj = selection[0]
+
+        # Get material density using QInputDialog dialog
+        material_density, ok = QtWidgets.QInputDialog.getDouble(None, "Material Density", "Enter the density of the material in Kg/m³:", decimals=2)
+        
+        if ok:
+            # Calculate mass with entered material density
+            mass = calculate_mass(obj.Shape, material_density)
+
+            volume_mm3 = format_number(obj.Shape.Volume)
+            volume_in3 = format_number(obj.Shape.Volume * 0.0000610237)
+            mass_g = format_number(mass)
+            mass_lbs = format_number(mass * 0.00220462262)
+
+            result_text = "Volume: {} mm³ / {} in³\n".format(volume_mm3, volume_in3)
+            result_text += "Mass: {} g / {} lbs".format(mass_g, mass_lbs)
+
+            # Create a custom message box with a larger font
+            msg_box = QtWidgets.QMessageBox()
+            msg_box.setWindowTitle("Object information")
+            msg_box.setText(result_text)
+
+            # Set the font size
+            font = QtGui.QFont()
+            font.setPointSize(15)  # custom font size
+            msg_box.setFont(font)
+
+            msg_box.exec_()
+    else:
+        print("Error: Select a single object.")
+
+show_volume_and_mass()
