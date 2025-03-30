@@ -4,12 +4,12 @@
 __Name__ = 'Volume_Mass'
 __Comment__ = 'A simple macro for FreeCAD with which we obtain the volume and mass of a solid'
 __Author__ = 'Maxi Vasquez'
-__Version__ = '0.1'
-__Date__ = '2023-07-15'
+__Version__ = '0.2'
+__Date__ = '2025-03-30'
 __License__ = 'LGPL-2.0-or-later'
 
 import FreeCADGui
-from PySide2 import QtWidgets, QtGui
+from PySide6 import QtWidgets, QtGui
 
 def calculate_mass(shape, material_density):
     volume = shape.Volume * 0.000001
