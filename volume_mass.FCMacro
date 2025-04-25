@@ -9,7 +9,7 @@ __Date__ = '2025-03-30'
 __License__ = 'LGPL-2.0-or-later'
 
 import FreeCADGui
-from PySide6 import QtWidgets, QtGui
+from PySide import QtWidgets, QtGui
 
 def calculate_mass(shape, material_density):
     volume = shape.Volume * 0.000001
